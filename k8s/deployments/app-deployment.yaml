@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emart
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emart
+
+  template:
+    metadata:
+      labels:
+        app: emart
+
+    spec:
+      containers:
+        - name: emart
+          image: emartapp:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4200
+            - containerPort: 5000
+
