@@ -44,10 +44,7 @@ node {
     stage("Done") {
         script {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
-		sh '''
-		helm uninstall ugchart-release 
-
-		'''
+		
 
                 build job: "k8s cd"
                 sh '''
