@@ -34,15 +34,23 @@ node {
     }
 
     stage("Approval") {
-        if (env.CHANGE_ID && (currentBuild.result == "SUCCESS" || currentBuild.result == null)) {
-            input message: "Everything great, wanna merge?", ok: "Merge"
+        script {
+            if (env.CHANGE_ID && (currentBuild.result == "SUCCESS" || currentBuild.result == null)) {
+                input message: "Everything great, wanna merge?", ok: "Merge"
+            }
         }
     }
 
     stage("Done") {
-        build job: "k8s cd"
-        sh '''
-        echo "Everything is working great!"
-        '''
+        script {
+            if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
+                build job: "k8s cd"
+                sh '''
+                echo "Everything is working great!"
+                '''
+            } else {
+                echo "Build failed — skipping downstream job."
+            }
+        }
     }
 }
