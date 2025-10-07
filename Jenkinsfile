@@ -11,7 +11,7 @@ node {
 
     stage("Deployment") {
         sh '''
-        helm install ugchart-release ugchart
+        helm uninstall ugchart-release
         '''
     }
 
