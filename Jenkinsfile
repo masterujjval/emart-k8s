@@ -9,9 +9,7 @@ node{
     }
     stage("Deployment"){
         sh '''
-        cd k8s
-        kubectl apply -f deployments
-        kubectl apply -f service
+        helm upgrade ugchart-release ugchart
         '''
     }
     stage("Pods"){
