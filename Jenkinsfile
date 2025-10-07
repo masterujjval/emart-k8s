@@ -11,7 +11,7 @@ node {
 
     stage("Deployment") {
         sh '''
-        helm uninstall ugchart-release
+        helm install ugchart-release ugchart
         '''
     }
 
@@ -45,7 +45,7 @@ node {
         script {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
 		sh '''
-		helm uninstall ugchart-release ugchart
+		helm uninstall ugchart-release 
 
 		'''
 
