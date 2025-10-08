@@ -47,7 +47,7 @@ node {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
 		
 
-                build job: "k8s cd"
+               
                 sh '''
                 echo "Everything is working great!"
                 '''
