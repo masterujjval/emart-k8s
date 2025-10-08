@@ -1,7 +1,7 @@
 node {
     stage("Cloning") {
-        git url: "https://github.com/masterujjval/emart-k8s.git", branch: "main"
-    }
+checkout scm    
+}
 
     stage("Building") {
         sh '''
