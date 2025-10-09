@@ -7,7 +7,7 @@ checkout scm
         sh '''
 		
        sudo docker build -t emartapp:latest .
-	   sudo minikube image load emartapp:latest
+	   
         '''
     }
 
