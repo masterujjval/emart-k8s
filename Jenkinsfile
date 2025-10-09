@@ -45,7 +45,8 @@ checkout scm
     stage("Done") {
         script {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
-		
+
+				
 
                
                 sh '''
@@ -56,4 +57,7 @@ checkout scm
             }
         }
     }
+	stage("Post Job"){
+		build job: "k8s cd"
+	}
 }
