@@ -5,20 +5,21 @@ checkout scm
 
     stage("Building") {
         sh '''
-        docker build -t emartapp:latest .
+		eval $(minikube docker-env)
+       sudo docker build -t emartapp:latest .
         '''
     }
 
     stage("Deployment") {
         sh '''
-	helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
-        helm install ugchart-release ugchart
+	sudo helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
+       sudo helm install ugchart-release ugchart
         '''
     }
 
     stage("Pods") {
         sh '''
-        kubectl get pods
+        sudo kubectl get pods
         sleep 10
         '''
     }
