@@ -5,20 +5,22 @@ checkout scm
 
     stage("Building") {
         sh '''
-        docker build -t emartapp:latest .
+		
+       sudo docker build -t emartapp:latest .
+	   
         '''
     }
 
     stage("Deployment") {
         sh '''
-	helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
-        helm install ugchart-release ugchart
+	sudo helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
+       sudo helm install ugchart-release ugchart
         '''
     }
 
     stage("Pods") {
         sh '''
-        kubectl get pods
+        sudo kubectl get pods
         sleep 10
         '''
     }
@@ -45,7 +47,8 @@ checkout scm
     stage("Done") {
         script {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
-		
+
+				
 
                
                 sh '''
@@ -56,4 +59,7 @@ checkout scm
             }
         }
     }
+	stage("Post Job"){
+		build job: "k8s cd"
+	}
 }
