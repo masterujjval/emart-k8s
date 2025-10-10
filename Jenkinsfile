@@ -15,7 +15,7 @@ checkout scm
     stage("Deployment") {
         sh '''
 	sudo helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
-       sudo helm install ugchart-release ugchart
+       sudo helm upgrade --install ugchart-release ugchart
         '''
     }
 
