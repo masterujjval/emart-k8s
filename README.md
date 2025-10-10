@@ -15,3 +15,8 @@ The project is intended for:
 - Practicing real-world Kubernetes deployments
 - Understanding multi-container setups
 - Exploring CI/CD pipelines and Helm charts
+
+
+
+project by :-
+   Ujjwal Gupta
