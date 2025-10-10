@@ -1,6 +1,7 @@
 node {
     stage("Cloning") {
 checkout scm    
+		build job: "sonar_checker"
 }
 
     stage("Building") {
@@ -60,7 +61,7 @@ checkout scm
                 '''
 
 					stage("Post Job"){
-		build job: "sonar_checker"
+		
 		build job: "k8s cd"
 	}
             } else {
