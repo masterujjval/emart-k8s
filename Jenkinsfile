@@ -48,20 +48,25 @@ checkout scm
     stage("Done") {
         script {
             if (currentBuild.result == "SUCCESS" || currentBuild.result == null) {
-
+				
 				
 
                
                 sh '''
+				gh pr merge $CHANGE_ID --merge --repo masterujjval/emart-k8s
                 echo "Everything is working great!"
+
+				
                 '''
+
+					stage("Post Job"){
+		build job: "sonar_checker"
+		build job: "k8s cd"
+	}
             } else {
                 echo "Build failed — skipping downstream job."
             }
         }
     }
-	stage("Post Job"){
-		build job: "sonar_checker"
-		build job: "k8s cd"
-	}
+
 }
