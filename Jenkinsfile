@@ -53,7 +53,7 @@ checkout scm
 
                
                 sh '''
-				gh pr merge $CHANGE_ID --merge --repo masterujjval/emart-k8s
+				gh pr merge $CHANGE_ID --merge --auto --repo masterujjval/emart-k8s
                 echo "Everything is working great!"
 
 				
