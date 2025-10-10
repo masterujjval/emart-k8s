@@ -6,7 +6,8 @@ checkout scm
     stage("Building") {
         sh '''
 		
-       sudo docker build -t emartapp:latest .
+       # sudo docker build -t emartapp:latest .
+	   sudo minikube image build -t emartapp:latest .
 	   
         '''
     }
