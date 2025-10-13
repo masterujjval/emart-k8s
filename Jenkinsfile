@@ -7,6 +7,7 @@ checkout scm
     stage("Building") {
         sh '''
 		
+		eval $(minikube docker-env)
        sudo docker build -t emartapp:latest .
 	   sudo minikube image build -t emartapp:latest .
 	   
