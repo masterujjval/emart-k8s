@@ -20,4 +20,4 @@ The project is intended for:
 Project by :-
    Ujjwal Gupta
 
-Aim for the moon!
+Aim for the moon not for the stars!
