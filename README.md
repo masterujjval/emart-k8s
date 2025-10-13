@@ -17,9 +17,7 @@ The project is intended for:
 - Exploring CI/CD pipelines and Helm charts
 
 
-
-project by :-
+Project by :-
    Ujjwal Gupta
-   yeppie
 
-working or not lets see
+Aim for the moon!
