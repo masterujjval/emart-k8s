@@ -6,7 +6,8 @@ RUN cd client && npm install && npm run build
 FROM node:14 AS server-build
 WORKDIR /usr/src/app
 COPY nodeapi/ ./nodeapi/
-RUN cd nodeapi && npm install && npm install prom-client
+RUN cd nodeapi && npm install && npm install prom-client --save
+
 
 FROM node:14
 WORKDIR /usr/src/app/
