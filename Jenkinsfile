@@ -8,22 +8,22 @@ checkout scm
         sh '''
 		
 		eval $(minikube docker-env)
-       sudo docker build -t emartapp:latest .
-	   sudo minikube image build -t emartapp:latest .
+       		docker build -t emartapp:latest .
+	  	minikube image build -t emartapp:latest .
 	   
         '''
     }
 
     stage("Deployment") {
         sh '''
-	sudo helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
-       sudo helm upgrade --install ugchart-release ugchart
+	helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
+       helm upgrade --install ugchart-release ugchart
         '''
     }
 
     stage("Pods") {
         sh '''
-        sudo kubectl get pods
+        kubectl get pods
         sleep 10
         '''
     }
