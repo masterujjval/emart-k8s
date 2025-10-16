@@ -1,14 +1,17 @@
+# Stage 1: Build Angular app
 FROM node:14 AS web-build
 WORKDIR /usr/src/app
 COPY ./ ./client
 RUN cd client && npm install && npm run build --prod
 
-# Use official nginx image as the base image
-FROM nginx:latest
+# Stage 2: Serve with non-root NGINX
+FROM bitnami/nginx:latest
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=web-build /usr/src/app/client/dist/client/ /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy built Angular app to NGINX public directory
+COPY --from=web-build /usr/src/app/client/dist/client/ /app
 
-# Expose port 4200
+# Replace default NGINX config
+# COPY nginx.conf /opt/bitnami/nginx/conf/server_blocks/default.conf
+
+EXPOSE 80
 EXPOSE 4200
