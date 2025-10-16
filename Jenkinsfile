@@ -9,7 +9,7 @@ checkout scm
 		
 		eval $(minikube docker-env)
        		docker build -t emartapp:latest .
-	  	minikube image build -t emartapp:latest .
+	  	eval $(minikube docker-env)
 	   
         '''
     }
