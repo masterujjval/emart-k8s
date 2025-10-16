@@ -1,4 +1,4 @@
-node {
+node("aws_slave") {
     stage("Cloning") {
 checkout scm    
 		build job: "sonar_checker"
@@ -16,6 +16,7 @@ checkout scm
 
     stage("Deployment") {
         sh '''
+        eval $(minikube docker-env)
 	helm uninstall ugchart-release || echo "Release not found, skipping uninstall"
        helm upgrade --install ugchart-release ugchart
         '''
