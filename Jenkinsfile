@@ -8,7 +8,7 @@ checkout scm
         sh '''
 		
 		eval $(minikube docker-env)
-       		docker build -t emartapp:latest .
+       		docker build -t hunterzoro/emartapp:latest .
 	  	eval $(minikube docker-env)
 	   
         '''

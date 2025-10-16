@@ -1,5 +1,8 @@
 replicaCount: 1
 image:
-  repository: emartapp
-  pullPolicy: Never
+  repository: hunterzoro/emartapp
+  pullPolicy: ifNotPresent
   tag: "latest"
+
+service:
+  
