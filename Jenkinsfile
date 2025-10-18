@@ -62,10 +62,7 @@ checkout scm
 				
                 '''
 
-					stage("Post Job"){
-		
-		build job: "k8s cd"
-	}
+			
             } else {
                 echo "Build failed — skipping downstream job."
             }
