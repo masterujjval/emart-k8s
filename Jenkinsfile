@@ -6,6 +6,7 @@ checkout scm
 
     stage("Building") {
         sh '''
+		kubectl config use-context minikube
 		
 		eval $(minikube docker-env)
        		docker build -t hunterzoro/emartapp:latest .
@@ -24,6 +25,7 @@ checkout scm
 
     stage("Pods") {
         sh '''
+		kubectl config use-context minikube
         kubectl get pods
         sleep 10
         '''
