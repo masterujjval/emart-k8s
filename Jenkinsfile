@@ -11,11 +11,11 @@ checkout scm
        		docker build -t hunterzoro/emartapp:latest .
 	  	eval $(minikube docker-env)
 	   
-        '''
-    }
+        
+    
 
-    stage("Deployment") {
-        sh '''
+    
+        
         eval $(minikube docker-env)
 	helm uninstall ugchart-release --namespace default || echo "Release not found, skipping uninstall"
      helm upgrade --install ugchart-release ugchart --namespace default
