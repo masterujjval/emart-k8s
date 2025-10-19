@@ -23,7 +23,7 @@ checkout scm
         
         eval $(minikube docker-env)
 	helm uninstall ugchart-release --namespace default || echo "Release not found, skipping uninstall"
-     helm upgrade --install ugchart-release ugchart --namespace default
+     helm upgrade --install ugchart-release ugchart --namespace default || echo "already installed" 
         '''
     }
 
