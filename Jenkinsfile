@@ -2,7 +2,11 @@ node("aws_slave") {
     stage("Cloning") {
 checkout scm    
 		build job: "sonar_checker"
+		sh """
+		slack "Sonar check passed. I hereby declare this code legally bug-free (until proven guilty)."
+		"""
 }
+	
 
     stage("Building") {
         sh '''
@@ -60,6 +64,7 @@ checkout scm
                 sh '''
 				
                 echo "Everything is working great!"
+				slack "Code and integration are done. If this were a movie, we’d roll credits."
 
 				
                 '''
