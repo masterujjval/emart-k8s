@@ -27,3 +27,5 @@ The world is your stage!
 Perform from all ur heart!!!
 Is this ur limit??
 Keep moving forward!
+
+I said move forward!
