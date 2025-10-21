@@ -1,4 +1,13 @@
 node("aws_slave") {
+
+	if (!env.CHANGE_ID) {
+    echo "Skipping branch build for ${env.BRANCH_NAME}"
+    currentBuild.result = 'SUCCESS'
+    return
+  }
+
+
+	
     stage("Cloning") {
 checkout scm    
 		build job: "sonar_checker"
